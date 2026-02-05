@@ -32,6 +32,16 @@ int binarytodecimal(char binary[]){
     return decimal;
 }
 
+char *decimaltooctal(int decimal){
+    char *octal=(char*)malloc(12);
+    if (octal==NULL){
+        printf("Memory allocation failed\n");
+        exit(1);
+    }
+    sprintf(octal, "%o", decimal);
+    return octal;
+}
+
 int main(){
     int ch;
     while (1){
@@ -64,6 +74,13 @@ int main(){
                 scanf("%s", input);
                 int binaryres= binarytodecimal(input);
                 printf("Binary to Decimal: %d\n", binaryres);
+                break;
+            case 3:
+                printf("Enter a decimal number: ");
+                scanf("%d", &num);
+                char *result= decimaltooctal(num);
+                printf("Decimal to Octal: %s\n", result);
+                free(result);
                 break;
         }
     }
