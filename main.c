@@ -23,6 +23,15 @@ char *decimaltobinary(int decimal){
     return binary;
 }
 
+int binarytodecimal(char binary[]){
+    int decimal=0;
+    int len= strlen(binary);
+    for (int i=0; i<len;i++){
+        decimal= decimal*2 + (binary[i]-'0');
+    }
+    return decimal;
+}
+
 int main(){
     int ch;
     while (1){
@@ -41,13 +50,20 @@ int main(){
             break;
         }
         char input[100];
+        int num;
         switch(ch){
             case 1:
                 printf("Enter a decimal number: ");
-                scanf("%s", &ch);
-                char *result= decimaltobinary(ch);
+                scanf("%d", &num);
+                char *result= decimaltobinary(num);
                 printf("Decimal to Binary: %s\n", result);
                 free(result);
+                break;
+            case 2:
+                printf("Enter a binary number: ");
+                scanf("%s", input);
+                int binaryres= binarytodecimal(input);
+                printf("Binary to Decimal: %d\n", binaryres);
                 break;
         }
     }
